@@ -2,6 +2,7 @@ const STRATEGY = 'MOBILE';
 
 const senderEmail = 'EXAMPLE@email.com';
 const recipientsList = [senderEmail, senderEmail];
+const googleSheetUrl = 'https://...';
 
 function serializeObject(obj) {
   var str = [];
