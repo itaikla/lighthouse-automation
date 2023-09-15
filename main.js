@@ -51,6 +51,13 @@ function sendEmail(recipient, subject, body) {
   }
 }
 
+function appendToExcel(row) {
+  var todayDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+  const sheet = SpreadsheetApp.openByUrl(googleSheetUrl).getSheetByName('Sheet1');
+  var data = [todayDate, row['seoScore'], row.accessibilityScore, row.performanceScore, row.bestPracticesScore];
+  sheet.appendRow(data);
+}
+
 function main() {
   var recipients = recipientsList;
   var subject = 'Lighthouse Scores';
@@ -62,13 +69,13 @@ function main() {
   ];
   const results = {};
   landingPages.forEach(lp => {
-    const res = JSON.stringify(fetchLighthouseMetrics(lp));
+    const res = fetchLighthouseMetrics(lp);
     results[lp] = res;
   })
 
   let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n`;
   Object.entries(results).forEach(([lp, res]) => {
-    mailBody += `\n\n${lp}: ${res}`;
+    mailBody += `\n\n${lp}: ${JSON.stringify(res)}`;
   });
 
   recipients.forEach(recipient => sendEmail(recipient, subject, mailBody));
