@@ -52,9 +52,9 @@ function sendEmail(recipient, subject, body) {
   }
 }
 
-function appendToExcel(row) {
+function appendToExcel(url, row) {
   var todayDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-  const sheet = SpreadsheetApp.openByUrl(googleSheetUrl).getSheetByName('Sheet1');
+  const sheet = SpreadsheetApp.openByUrl(url).getSheetByName('Sheet1');
   var data = [todayDate, row.seoScore, row.accessibilityScore, row.performanceScore, row.bestPracticesScore];
   sheet.appendRow(data);
 }
