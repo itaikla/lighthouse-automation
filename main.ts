@@ -63,7 +63,7 @@ function appendToExcel(url: string, row: {
 }
 
 async function main() {
-  const subject: string = 'Lighthouse Scores - Bookaway';
+  const subject: string = 'Lighthouse Scores';
   const landingPages: string[] = [
     'http://www.yahoo.com'
   ];
