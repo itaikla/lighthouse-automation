@@ -1,9 +1,5 @@
 // The translation for TS done by GPT-3.5
 
-const STRATEGY: string = 'MOBILE';
-const recipients: string[] = ['itai.k@bookaway.com'];
-const googleSheetUrl: string = 'https://docs.google.com/spreadsheets/d/1V_NDiwSXiOaZCDD2_Aih5tu0-IAPsU_OsQNKbLcvFY0/edit#gid=0';
-
 async function serializeObject(obj: Record<string, string | number | boolean>): Promise<string> {
   const str: string[] = [];
   for (const p in obj) {
@@ -69,11 +65,7 @@ function appendToExcel(url: string, row: {
 async function main() {
   const subject: string = 'Lighthouse Scores - Bookaway';
   const landingPages: string[] = [
-    'https://www.bookaway.com/routes/vietnam/sapa-to-hanoi',
-    'https://www.bookaway.com/routes/croatia/hvar-to-split',
-    'https://www.bookaway.com/routes/croatia/hvar',
-    'https://www.bookaway.com/routes/croatia',
-    'https://www.bookaway.com/suppliers/tp-line'
+    'http://www.yahoo.com'
   ];
   const results: Record<string, {
     seoScore?: number;
@@ -91,8 +83,6 @@ async function main() {
   Object.entries(results).forEach(([lp, res]) => {
     mailBody += `\n\n${lp}: ${JSON.stringify(res)}`;
   });
-
-  appendToExcel(googleSheetUrl, results['https://www.bookaway.com/routes/croatia/hvar-to-split']);
 
   recipients.forEach(recipient => sendEmail(recipient, subject, mailBody));
 }
