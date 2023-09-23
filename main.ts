@@ -62,7 +62,7 @@ function appendToExcel(url: string, row: {
 
 async function main() {
   const subject: string = 'Lighthouse Scores';
-  const landingPages: string[] = [
+  const pages: string[] = [
     'http://www.yahoo.com'
   ];
   const results: Record<string, {
@@ -72,9 +72,9 @@ async function main() {
     bestPracticesScore?: number;
   }> = {};
 
-  for (const lp of landingPages) {
-    const res = await fetchLighthouseMetrics(lp);
-    results[lp] = res;
+  for (const page of pages) {
+    const res = await fetchLighthouseMetrics(page);
+    results[page] = res;
   }
 
   let mailBody: string = `Strategy: ${STRATEGY}\nEnv: Production\n`;
