@@ -1,5 +1,3 @@
-// The translation for TS done by GPT-3.5
-
 async function serializeObject(obj: Record<string, string | number | boolean>): Promise<string> {
   const str: string[] = [];
   for (const p in obj) {
