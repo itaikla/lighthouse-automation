@@ -72,9 +72,9 @@ async function main() {
     bestPracticesScore?: number;
   }> = {};
 
-  for (const page of pages) {
-    const res = await fetchLighthouseMetrics(page);
-    results[page] = res;
+  for (const p of pages) {
+    const res = await fetchLighthouseMetrics(p);
+    results[p] = res;
   }
 
   let mailBody: string = `Strategy: ${STRATEGY}\nEnv: Production\n`;
