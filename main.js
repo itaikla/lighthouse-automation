@@ -62,16 +62,16 @@ function appendToExcel(url, row) {
 function main() {
   var recipients = recipientsList;
   var subject = 'Lighthouse Scores';
-  const landingPages = [
+  const pages = [
     'https://www.example.com/home',
     'https://www.example.com/page/1',
     'https://www.example.com/page/2',
     'https://www.example.com/page/3',
   ];
   const results = {};
-  landingPages.forEach(lp => {
-    const res = fetchLighthouseMetrics(lp);
-    results[lp] = res;
+  pages.forEach(p => {
+    const res = fetchLighthouseMetrics(p);
+    results[p] = res;
   })
 
   let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n`;
