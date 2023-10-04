@@ -63,15 +63,16 @@ function main() {
   var recipients = recipientsList;
   var subject = 'Lighthouse Scores';
   const pages = [
-    'https://www.example.com/home',
-    'https://www.example.com/page/1',
-    'https://www.example.com/page/2',
-    'https://www.example.com/page/3',
+    { url: 'https://www.example.com/home', sheet: '' },
+    { url: 'https://www.example.com/page/1' }
   ];
   const results = {};
   pages.forEach(p => {
-    const res = fetchLighthouseMetrics(p);
-    results[p] = res;
+    const res = fetchLighthouseMetrics(p.url);
+    results[p.url] = res;
+    if (p.sheet) {
+      appendToExcel(p.sheet, res);
+    }
   })
 
   let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n`;
