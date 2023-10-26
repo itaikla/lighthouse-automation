@@ -1,4 +1,4 @@
-const STRATEGY = 'MOBILE';
+const STRATEGY = 'MOBILE'; // May be MOBILE or DESKTOP
 
 const senderEmail = 'EXAMPLE@email.com';
 const recipients = [senderEmail, senderEmail];
