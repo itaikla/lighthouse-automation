@@ -1,9 +1,16 @@
-const STRATEGY = 'MOBILE'; // May be MOBILE or DESKTOP
+// Pages to investigate
+const pages = [
+ { url: 'https://www.example.com/home', sheet: '' },
+ { url: 'https://www.example.com/page/1' }
+];
+
+// May be MOBILE or DESKTOP
+const STRATEGY = 'MOBILE';
 
 const senderEmail = 'EXAMPLE@email.com';
 const recipients = [senderEmail, senderEmail];
 const googleSheetUrl = 'https://...';
-const subject = 'Lighthouse Scores';
+const mailSubject = 'Lighthouse Scores';
 
 function serializeObject(obj) {
   var str = [];
@@ -42,7 +49,7 @@ function sendEmail(recipient, subject, body) {
   try {
     MailApp.sendEmail({
       to: recipient,
-      subject: subject,
+      subject: mailSubject,
       body: body,
       from: senderEmail,
     });
@@ -60,10 +67,6 @@ function appendToExcel(url, row) {
 }
 
 function main() {
-  const pages = [
-    { url: 'https://www.example.com/home', sheet: '' },
-    { url: 'https://www.example.com/page/1' }
-  ];
   const results = {};
   pages.forEach(p => {
     const res = fetchLighthouseMetrics(p.url);
