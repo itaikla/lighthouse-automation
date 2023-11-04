@@ -1,3 +1,8 @@
+const subject: string = 'Lighthouse Scores';
+const pages: string[] = [
+  'http://www.yahoo.com'
+];
+
 async function serializeObject(obj: Record<string, string | number | boolean>): Promise<string> {
   const str: string[] = [];
   for (const p in obj) {
@@ -61,10 +66,6 @@ function appendToExcel(url: string, row: {
 }
 
 async function main() {
-  const subject: string = 'Lighthouse Scores';
-  const pages: string[] = [
-    'http://www.yahoo.com'
-  ];
   const results: Record<string, {
     seoScore?: number;
     accessibilityScore?: number;
