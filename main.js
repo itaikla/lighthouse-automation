@@ -1,3 +1,5 @@
+import { serializeObject } from './utils';
+
 // Pages to investigate
 const pages = [
  { url: 'https://www.example.com/home', sheet: '' },
@@ -11,16 +13,6 @@ const senderEmail = 'EXAMPLE@email.com';
 const recipients = [senderEmail, senderEmail];
 const googleSheetUrl = 'https://...';
 const mailSubject = 'Lighthouse Scores';
-
-function serializeObject(obj) {
-  var str = [];
-  for (var p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-    }
-  }
-  return str.join("&");
-}
 
 function fetchLighthouseMetrics(url) {
   try {
