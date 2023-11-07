@@ -1,4 +1,4 @@
-import { serializeObject } from './utils';
+import { sendEmail, appendToExcel, serializeObject } from './utils';
 
 // Pages to investigate
 const pages = [
@@ -35,27 +35,6 @@ function fetchLighthouseMetrics(url) {
   } catch (error) {
     Logger.log('Error on fetchLighthouseMetrics: ' + error.toString());
   }
-}
-
-function sendEmail(recipient, subject, body) {
-  try {
-    MailApp.sendEmail({
-      to: recipient,
-      subject: mailSubject,
-      body: body,
-      from: senderEmail,
-    });
-    Logger.log('Email sent successfully to ' + recipient);
-  } catch (error) {
-    Logger.log(`Error sending email: ${error.toString()}`);
-  }
-}
-
-function appendToExcel(url, row) {
-  var todayDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-  const sheet = SpreadsheetApp.openByUrl(url).getSheetByName('Sheet1');
-  var data = [todayDate, row.seoScore, row.accessibilityScore, row.performanceScore, row.bestPracticesScore];
-  sheet.appendRow(data);
 }
 
 function main() {
