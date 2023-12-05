@@ -47,7 +47,8 @@ function main() {
     }
   })
 
-  let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n${landingPages.filter(lp => lp.sheet).map(lp => `${lp.url}: ${lp.sheet}`).join('\n')}`;
+  const urlsList = landingPages.filter(lp => lp.sheet).map(lp => `${lp.url}: ${lp.sheet}`).join('\n');
+  let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n${urlsList}`;
   Object.entries(results).forEach(([lp, res]) => {
     mailBody += `\n\n${lp}: ${JSON.stringify(res)}`;
   });
