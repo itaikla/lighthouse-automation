@@ -33,7 +33,7 @@ function fetchLighthouseMetrics(url) {
 
     return lighthouseMetrics;
   } catch (error) {
-    Logger.log('Error on fetchLighthouseMetrics: ' + error.toString());
+    Logger.log(`Error on fetchLighthouseMetrics: ${error.toString()} for ${url}`);
   }
 }
 
@@ -47,7 +47,7 @@ function main() {
     }
   })
 
-  let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n`;
+  let mailBody = `Strategy: ${STRATEGY}\nEnv: Production\n${landingPages.filter(lp => lp.sheet).map(lp => `${lp.url}: ${lp.sheet}`).join('\n')}`;
   Object.entries(results).forEach(([lp, res]) => {
     mailBody += `\n\n${lp}: ${JSON.stringify(res)}`;
   });
