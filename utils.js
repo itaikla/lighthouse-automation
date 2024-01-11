@@ -12,6 +12,16 @@ export function sendEmail(recipient, subject, body) {
   }
 }
 
+function sendTelegramMessage(message) {
+  const text = encodeURIComponent(message);
+  const url = `${TELEGRAM_API}?chat_id=${CHAT_ID}&text=${text}`;
+  const response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  const { ok, description } = JSON.parse(response);
+  if (ok !== true) {
+    Logger.log(`Error: ${description}`);
+  }
+}
+
 export function appendToExcel(url, row) {
   var todayDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
   const sheet = SpreadsheetApp.openByUrl(url).getSheetByName('Sheet1');
