@@ -43,7 +43,7 @@ function main() {
     const res = fetchLighthouseMetrics(p.url);
     results[p.url] = res;
     if (p.sheet) {
-      appendToExcel(p.sheet, res);
+      appendToExcel({ url: p.sheet, row: res });
     }
   })
 
