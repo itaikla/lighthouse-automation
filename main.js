@@ -1,12 +1,12 @@
 import { sendEmail, appendToExcel, serializeObject } from './utils';
 
-// Pages to investigate
+// Pages to inspect
 const pages = [
  { url: 'https://www.example.com/home', sheet: '' },
  { url: 'https://www.example.com/page/1' }
 ];
 
-// May be MOBILE or DESKTOP
+// May be MOBILE or DESKTOP. MOBILE is the recommended option
 const STRATEGY = 'MOBILE';
 
 const senderEmail = 'EXAMPLE@email.com';
