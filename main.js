@@ -11,8 +11,6 @@ const STRATEGY = 'MOBILE';
 
 const senderEmail = 'EXAMPLE@email.com';
 const recipients = [senderEmail, senderEmail];
-const googleSheetUrl = 'https://...';
-const mailSubject = 'Lighthouse Scores';
 
 function fetchLighthouseMetrics(url) {
   try {

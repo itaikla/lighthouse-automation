@@ -12,7 +12,7 @@ export function sendEmail(recipient, subject, body) {
   }
 }
 
-function sendTelegramMessage(message) {
+export function sendTelegramMessage(message) {
   const text = encodeURIComponent(message);
   const url = `${TELEGRAM_API}?chat_id=${CHAT_ID}&text=${text}`;
   const response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
