@@ -1,3 +1,3 @@
 # lighthouse-automation
 
-This script detects google lighthouse page ranking, by using its api.
+This repo includes some scripts which monitoring SEO analyzing tools APIs, like Google Lighthouse, and Google Search Console.

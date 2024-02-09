@@ -1,3 +1,5 @@
+import { Logger } from '../logger';
+
 export function sendEmail(recipient, subject, body) {
   try {
     MailApp.sendEmail({
