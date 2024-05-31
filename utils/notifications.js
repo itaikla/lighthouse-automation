@@ -15,6 +15,10 @@ export function sendEmail(recipient, subject, body) {
 }
 
 export function sendTelegramMessage(message) {
+  const BOT_TOKEN = 'EXAMPLE';
+  const CHAT_ID = 'EXAMPLE';
+  const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
   const text = encodeURIComponent(message);
   const url = `${TELEGRAM_API}?chat_id=${CHAT_ID}&text=${text}`;
   const response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
